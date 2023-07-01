@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.javatpoint.model.Customer;
+import com.javatpoint.model.LoanRecommendation;
 import com.javatpoint.service.ICustomer;
 import com.javatpoint.service.IUser;
+import com.javatpoint.util.LoanMain;
 
 @Controller
 public class DemoController {
@@ -64,10 +66,13 @@ public class DemoController {
 	public ModelAndView saveLoan(@ModelAttribute Customer customer) {
 	//public ModelAndView saveLoan(@RequestParam String name, @RequestParam String income,
 		//	@RequestParam String creditscore) {
+
+		customerRepo.save(customer);
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("customer-data");
 		modelAndView.addObject("customer", customer);
-		customerRepo.save(customer);
+		LoanRecommendation recomendation = LoanMain.getLoanRecommendation(customer);
+		modelAndView.addObject("recomendation", recomendation);
 		return modelAndView;
 	}
 }
