@@ -1,0 +1,41 @@
+<html xmlns:th="https://www.thymeleaf.org">
+
+	<body>	
+		<div th:if="${message}">
+			<h2 th:text="${message}"/>
+		</div>
+	
+	
+		<div>
+				<form method="post" action="/p">
+					<input type="text" name="query"/>
+				    <input type="submit" name="Search"/>
+				    <br/>
+				    
+				    <table>
+				    	<thead>
+				    		<th>Name</th>
+				    		<th>Email</th>
+				    		<th>Headline</th>
+				    		<th>Phone No</th>
+				    	 </thead>
+				    	<tr th:each="emp: ${employees}">
+				    		<td th:text="${emp.name}"></td>
+				    		<td th:text="${emp.email}"></td>
+				    		<td th:text="${emp.headline}"></td>
+				    		<td th:text="${emp.phoneNo}"></td>
+				    	
+				    	</tr>			
+				    	
+				    	
+				    </table>
+				    
+				    
+				
+				</form>
+		
+		</div>
+		
+	</body>
+
+</html>
