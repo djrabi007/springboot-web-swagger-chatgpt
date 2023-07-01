@@ -21,6 +21,10 @@ public class LoanMain {
 		// Create a customer object
 		Customer customer = new Customer("John Doe", 60000, 720);
 
+		getLoanRecommendation(customer);
+	}
+
+	public static LoanRecommendation getLoanRecommendation(Customer customer) {
 		// Get loan recommendation for the customer
 		LoanRecommendation recommendation = LoanRecommendationSystem.getLoanRecommendation(customer);
 
@@ -33,5 +37,6 @@ public class LoanMain {
 			System.out.println("Loan Amount: $" + recommendation.getLoanAmount());
 			System.out.println("Interest Rate: " + recommendation.getInterestRate() + "%");
 		}
+		return recommendation;
 	}
 }
