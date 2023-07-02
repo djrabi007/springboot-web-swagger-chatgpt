@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: rabi0
+Build-Jdk: 17.0.7
+Implementation-Title: Spring Boot REST API Example
+Implementation-Version: 1.0
+Implementation-Vendor-Id: org.springframework.boot
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
+ -starter-parent/spring-rest-validation
+Created-By: Maven Integration for Eclipse
+
