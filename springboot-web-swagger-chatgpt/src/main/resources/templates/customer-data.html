@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org"> 
+  <body>
+		<table>
+		 
+			<tr>
+				<td><h4>Customer Name:</h4></td>
+				<td><h4 th:text="${customer.name}"></h4></td>
+			</tr>
+			<tr>
+				<td><h4>Customer Income:</h4></td>
+				<td><h4 th:text="${customer.income}"></h4></td>
+			</tr>
+			<tr>
+				<td><h4>Credit score :</h4></td>
+				<td><h4 th:text="${customer.creditScore}"></h4></td>
+			</tr>
+			<tr>
+				<td><h4>Loan Type :</h4></td>
+				<td><h4 th:text="${recomendation.loanType}"></h4></td>
+			</tr>
+			<tr>
+				<td><h4>Loan Amount :</h4></td>
+				<td><h4 th:text="${recomendation.loanAmount}"></h4></td>
+			</tr>
+			<tr>
+				<td><h4>Interest Rate :</h4></td>
+				<td><h4 th:text="${recomendation.interestRate}"></h4></td>
+			</tr> 
+		</table>
+		
+		<!--  <h1>PDF File</h1>
+    <ul>
+        <li><a href="/pdfs/output.pdf">File 1</a></li>
+    </ul> -->
+    <h1>Loan Agreement document</h1>
+    <a th:href="@{/pdfs/output.pdf}" target="_blank">Download PDF</a>
+    
+	</body>
+
+</html>
