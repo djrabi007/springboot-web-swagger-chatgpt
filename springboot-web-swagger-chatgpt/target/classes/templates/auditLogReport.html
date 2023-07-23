@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Change Request Audit Log Report</title>
+    <!-- Add your CSS styles here -->
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Data from Spring Boot Backend</h1>
+        <div id="data"></div>
+
+        <script>
+            // Function to make AJAX call to backend
+            function fetchData() {
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "/change-requests/all-report", true);
+
+                xhr.onload = function () {
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        var response = JSON.parse(xhr.responseText);
+                        displayData(response); // Display the data in the frontend
+                    } else {
+                        console.error('Request failed with status:', xhr.status);
+                    }
+                };
+
+                xhr.onerror = function () {
+                    console.error('Request failed');
+                };
+
+                xhr.send();
+            }
+
+            // Function to display the data in the frontend
+            function displayData(data) {
+                var dataContainer = document.getElementById("data");
+                dataContainer.innerHTML = JSON.stringify(data);
+            }
+
+            // Fetch data when the page loads
+            window.onload = fetchData;
+        </script>
+        
+           
+    </div>
+
+    <div class="container">
+        <h1>Change Request Audit Log Report</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Change Request ID</th>
+                    <th>CR Number</th>
+                    <th>Creation Date & Time</th>
+                    <th>Created By</th>
+                    <th>Account Group</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="changeRequest : ${changeRequests}">
+                    <td th:text="${changeRequest.id}"></td>
+                    <td th:text="${changeRequest.crNumber}"></td>
+                    <td th:text="${changeRequest.creationDateTime}"></td>
+                    <td th:text="${changeRequest.createdBy}"></td>
+                    <td th:text="${changeRequest.accountGroup}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+</body>
+</html>
