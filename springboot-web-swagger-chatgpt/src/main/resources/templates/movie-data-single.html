@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 400px;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        a {
+            display: inline-block;
+            margin-right: 10px;
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Movie Details</h1>
+
+    <table>
+        <tr>
+            <th>Movie Name:</th>
+            <td><h4 th:text="${movie.title}"></h4></td>
+        </tr>
+        <tr>
+            <th>Movie Rating:</th>
+            <td><h4 th:text="${movie.rating}"></h4></td>
+        </tr>
+    </table>
+
+    <h1>Home</h1>
+    <a href="/main">Home</a>
+
+    <h1>All Movies</h1>
+    <a href="/movies">View Movies</a>
+
+    <h1>Top Movie</h1>
+    <a href="/movies-top">Top Movies</a>
+
+    <h1>Pagewise Movie</h1>
+    <a href="/movies-page">Page Movie</a>
+</body>
+</html>

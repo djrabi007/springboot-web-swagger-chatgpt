@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XML Files</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        header {
+            background-color: #007BFF;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+        container {
+            margin: 20px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>XML Files</h1>
+    </header>
+    <div class="container">
+		<form action="/xml-generation" method="get">
+			<table>
+				<thead>
+					<tr>
+						<th>SQL</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<!-- <td th:text="${sqlName}"></td> -->
+						<td>SELECT * FROM customer WHERE income >= <input
+							type="number" id="startValue" name="startValue" required>
+							AND income <= <input type="number" id="endValue" name="endValue"
+							required>
+					<td><button type="submit">Generate XML</button></td> 
+					</tr>
+				</tbody>
+			</table>
+		</form>
+
+    </div>
+	<div th:if="${errorMessage}" class="error-message">
+		<span style="color: red;"><b>Error:</b></span> <span th:text="${errorMessage}" style="color: red;"></span>
+	</div>
+
+<div th:if="${fileNames}" class="container"> 
+	 <h2>List of XML Files</h2>
+        <ul>
+            <li th:each="fileName : ${fileNames}">
+                <a th:href="@{'/download/' + ${fileName}}" th:text="${fileName}">Download</a>
+            </li>
+        </ul>
+    </div>
+<div th:if="${fileNames}" class="container"> 
+        <h2>File Deletion</h2>
+        <p th:text="${message}"></p>
+        <a class="btn" th:href="@{/deleteFiles}">Delete Files</a>
+    </div>
+</body>
+
+</html>

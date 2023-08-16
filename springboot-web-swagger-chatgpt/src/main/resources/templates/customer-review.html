@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sentiment Analysis - Customer Reviews</title>
+<link rel="stylesheet" th:href="@{/css/styleSenti.css}" />
+</head>
+
+<body>
+	<div class="container">
+		<h1>Sentiment Analysis - Customer Reviews</h1>
+		<div class="input-section">
+			<label for="reviewInput">Enter your review:</label>
+			<textarea id="reviewInput" placeholder="Type your review here..."></textarea>
+			<button onclick="analyzeReview()">Analyze</button>
+		</div>
+		<div class="output-section" id="sentimentResult">
+			<!-- Sentiment analysis result will be displayed here -->
+		</div>
+	</div>
+	<script th:src="@{/js/script.js}"></script>
+
+	<!-- Customer Review Result Section -->
+	<div class="container">
+		<h1>Customer Review Result</h1>
+		<a href="/getAllReviews">Review</a>
+
+		<!-- Display the list of customer reviews -->
+		<h2>Customer Reviews:</h2>
+		<ul>
+			<li th:each="reviewT : ${reviewTotal}" th:text="${reviewT.review}"></li>
+		</ul>
+
+		<!-- Display the sentiment distribution -->
+		<div class="table-container">
+		<h2>Sentiment Distribution:</h2>
+		<br>
+		<br>
+		<table border="1">
+			<tr>
+				<th>Sentiment</th>
+				<th>Count</th>
+			</tr>
+			<tr th:each="entry : ${reviewSummary}">
+				<td th:text="${entry.key}"></td>
+				<td th:text="${entry.value}"></td>
+			</tr>
+		</table>
+		</div>
+	</div>
+			
+</body>
+
+</html>
