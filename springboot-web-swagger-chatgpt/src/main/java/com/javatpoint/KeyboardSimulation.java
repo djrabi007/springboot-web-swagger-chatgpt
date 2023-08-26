@@ -8,11 +8,15 @@ public class KeyboardSimulation {
 		Robot robot = new Robot();
 		while (true) {
 			// Simulate typing a paragraph
+			//String st = "I am writing a Java program for keyboard simulation. This program uses the Robot class to simulate key presses and releases. It can be used for various automation tasks that involve keyboard input. In this example, I am typing a paragraph using Java.";
+			String st = "I like to work in Truist  Bank and open account";
 			typeParagraph(robot,
-					"I am writing a Java program for keyboard simulation. This program uses the Robot class to simulate key presses and releases. It can be used for various automation tasks that involve keyboard input. In this example, I am typing a paragraph using Java.");
+					st);
 
 			// Delay for 10 seconds before typing again
 			Thread.sleep(10000);
+
+
 		}
 	}
 
@@ -38,9 +42,26 @@ public class KeyboardSimulation {
 			// Pause briefly between each key press
 			try {
 				Thread.sleep(50);
+
+				ctrl_S_to_Save_File(robot);
+
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	private static void ctrl_S_to_Save_File(Robot robot) {
+		// Press and hold the Ctrl key
+		robot.keyPress(KeyEvent.VK_CONTROL);
+
+		// Press the 'S' key
+		robot.keyPress(KeyEvent.VK_S);
+
+		// Release the 'S' key
+		robot.keyRelease(KeyEvent.VK_S);
+
+		// Release the Ctrl key
+		robot.keyRelease(KeyEvent.VK_CONTROL);
 	}
 }
