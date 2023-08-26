@@ -44,9 +44,10 @@ public class KeyboardSimulation {
 
 			// Pause briefly between each key press
 			try {
-				Thread.sleep(50);
+				Thread.sleep(170);
 
 				ctrl_S_to_Save_File(robot);
+				Thread.sleep(10);
 
 			} catch (InterruptedException e) {
 				e.printStackTrace();
